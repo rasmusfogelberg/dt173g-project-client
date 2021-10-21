@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist",
+    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "sourceMap": true,
+
+    /* Language and Environment */
+    "target": "es5",
+
+    /* Modules */
+    "module": "es6",
+  }
+}
