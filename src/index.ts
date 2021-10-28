@@ -1,5 +1,4 @@
 import "./sass/main.scss";
-import "./ts/project.ts";
 
 interface Project {
   title: string;
