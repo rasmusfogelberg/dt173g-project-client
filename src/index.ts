@@ -1,5 +1,8 @@
 import "./sass/main.scss";
-import "./ts/menu.ts";
+import "./ts/menu";
+import listProjects from "./ts/projects";
+import listEducations from "./ts/educations";
+import listExperiences from "./ts/experiences";
 
 interface Project {
   title: string;
@@ -42,86 +45,28 @@ function getExperiences(): Promise<Experience[]> {
   const [educations, experiences, projects] = await Promise.all([getEducations(), getExperiences(), getProjects()]);
   const path = window.location.pathname;
 
-  console.log(path);
+  const projectListElement = document.querySelector('#project-list');
+  const educationListElement = document.querySelector('#education-list');
+  const experienceListElement = document.querySelector('#experience-list');
 
   switch (path) {
     case '/':
-      // Render projects
-      console.log('RENDER PROJECTS!');
-      console.log('Projects', projects);
 
-      let listProjects = (projects: any) => {
-        let listProjectsEl = document.querySelector('#project-list');
-
-        for (let key in projects) {
-          let value = projects[key];
-          listProjectsEl.innerHTML += `
-          <ul class="list">
-            <li><strong>${value.title}</strong></li>
-            <li><strong>URL:</strong> <a href="${value.url}" taget="_blank">${value.url}</a></li>
-            <li class="li-desc-title"><strong>Description</strong></li>
-            <li class="li-desc">${value.description}</li>
-          </ul>
-          `
-        }
-
-      }; 
-
-    listProjects(projects);
+      listProjects(projects, projectListElement);
 
       break;
     case '/cv.html':
-      // Render experiences
-      console.log('RENDER EXPERIENCES!');
-      console.log('Experiences', experiences);
 
-      let listExperience = (experiences: any) => {
-        let listExperienceEl = document.querySelector('#experience-list');
-
-        for (let key in experiences) {
-          let value = experiences[key];
-          listExperienceEl.innerHTML += `
-          <ul class="list">
-            <li><strong>${value.title} - ${value.company}</strong></li>
-            <li>${value.started_at} - ${value.ended_at}</li>
-            <li class="li-desc-title"><strong>Description</strong></li>
-            <li class="li-desc">${value.description}</li>
-          </ul>
-          `
-        }
-
-      }; 
-
-    listExperience(experiences);
+      listExperiences(experiences, experienceListElement);
 
       break;
     case '/education.html':
-      // Render educations
-      console.log('RENDER EDUCATIONS!');
-      console.log('Educations', educations);
 
-      let listEducation = (educations: any) => {
-        let listEducationEl = document.querySelector('#education-list');
-
-        for (let key in educations) {
-          let value = educations[key];
-          listEducationEl.innerHTML += `
-          <ul class="list">
-            <li><strong>${value.name} - ${value.institution}</strong></li>
-            <li>${value.started_at} - ${value.ended_at}</li>
-            <li class="li-desc-title"><strong>Description</strong></li>
-            <li class="li-desc">${value.description}</li>
-          </ul>
-          `
-        }
-
-      }; 
-
-    listEducation(educations);
+      listEducations(educations, educationListElement);
 
       break;
     default:
-      // Render not found
+      
       break;
   }
 
