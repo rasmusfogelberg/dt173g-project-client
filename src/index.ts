@@ -15,7 +15,7 @@ interface Project {
 interface Education { };
 interface Experience { };
 
-const API_URL = `http://localhost/api`;
+const API_URL = `https://api.fogelcode.com/api`;
 
 function getProjects(): Promise<Project[]> {
   return fetch(`${API_URL}/projects`)
