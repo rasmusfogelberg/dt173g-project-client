@@ -43,13 +43,15 @@ header {
       .nav-item {
         font-weight: 700;
         font-size: 1.4rem;
-        text-transform: uppercase;
-        border: 3px solid transparent;
-        padding: 2rem 2.5rem;
-        border-radius: 3px;
-        transition: 0.3s border, 0.3s color;
+        padding: 2rem 0;
         cursor: pointer;
-
+        border: 3px solid transparent;
+        border-radius: 3px;
+        .nav-link {
+          padding: 2rem 2.5rem;
+          transition: 0.3s border, 0.3s color;
+          text-transform: uppercase;
+        }
         &:hover {
           border: 3px solid #edeeee;
           color: #edeeee;
