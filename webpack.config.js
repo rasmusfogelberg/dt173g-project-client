@@ -16,6 +16,9 @@ module.exports = {
   devServer: {
     static: "./dist",
   },
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js'],
+  },
   module: {
     rules: [{
         test: /\.ts?$/,
